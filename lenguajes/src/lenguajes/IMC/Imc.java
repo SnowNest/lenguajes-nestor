@@ -10,10 +10,21 @@ package lenguajes.IMC;
  * @author nesto
  */
 public class Imc {
-    Usuario user;
+    private Usuario user;
+    public Imc(){
+        user = new Usuario();
+    }
     
     String calcular(){
-        
-        return "Estas flaco";        
+        float imc = user.getPeso() / ( user.getAltura() * user.getAltura() );
+        return "Estes es tu IMC: " + imc;        
+    }
+
+    public Usuario getUser() {
+        return user;
+    }
+
+    public void setUser(Usuario user) {
+        this.user = user;
     }
 }

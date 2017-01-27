@@ -11,6 +11,12 @@ package lenguajes.IMC;
  */
 public class AplicacionImc {
     public static void main(String[] args) {
+        Usuario yo = new Usuario();
+         yo.setPeso(85);
+         yo.setAltura(1.76f);
+         Imc imc  = new Imc();
+         imc.setUser(yo);
         
+         System.out.println(imc.calcular());
     }
 }
