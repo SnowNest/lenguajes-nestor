@@ -10,7 +10,7 @@ package lenguajes.IMC;
  * @author nesto
  */
 public class Usuario {
-    float peso, altura;
+    private float peso, altura;
     
     
 }
