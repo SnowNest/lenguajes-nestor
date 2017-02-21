@@ -8,7 +8,7 @@ package excepciones;
 /**
  *
  * @author T-102
- */
+ */p
 public class Primera {
     public static void main(String[] args) {
         /*
