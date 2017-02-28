@@ -3,14 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package excepcione2;
+package excepciones2;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 
 /**
  *
- * @author T-102
+ * @author Fernandodaniel
  */
 public class AplicacionLectora extends javax.swing.JFrame {
 
@@ -39,8 +42,7 @@ public class AplicacionLectora extends javax.swing.JFrame {
 
         jLabel1.setText("Selecciona un archivo de texto");
 
-        jButton1.setText("Seleccionar");
-        jButton1.setToolTipText("");
+        jButton1.setText("Selecciona tu archivo");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -56,43 +58,49 @@ public class AplicacionLectora extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addGap(135, 135, 135)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(jLabel1))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(jButton1)
+                    .addComponent(jLabel1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(93, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(41, 41, 41)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGap(35, 35, 35)
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        try{
-            JFileChooser selector = new JFileChooser();
-            selector.showOpenDialog(this);
-            File file = selector.getSelectedFile();
-            ModeloLector modeolo = new ModeloLector();
-            textoResultado.setText(modeolo.leerArchivo(file));
-        }catch (Exception ex){
-            textoResultado.setText(ex.getMessage());
-        }
+        try {
+            // TODO add your handling code here:
             
+            JFileChooser selector=new JFileChooser();
+            selector.showOpenDialog(this);
+            
+            File file= selector.getSelectedFile(); //get retorno
+            ValidacionArchivo.validarExtencion(file);
+            ModeloLector modelo= new ModeloLector();
+            textoResultado.setText(modelo.leerArchivo(file));;
+        } catch (Exception ex) {
+           textoResultado.setText(ex.getMessage());
+        }
+
+
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
